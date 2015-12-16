@@ -1,10 +1,13 @@
 import bintray.Keys._
 import ReleaseTransformations._
 
-bintrayPublishSettings
+lazy val commonSettings = Seq(
+  organization in ThisBuild := "im.actor"
+)
 
-lazy val root = (project in file(".")).
-  settings(
+lazy val root = (project in file("."))
+  .settings(commonSettings ++ bintrayPublishSettings: _*)
+  .settings(
     sbtPlugin := true,
     name := "actor-sbt-houserules",
     description := "sbt plugin for enforcing sbt house rules in Actor Team.",
