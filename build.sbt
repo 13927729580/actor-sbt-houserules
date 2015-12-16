@@ -1,6 +1,8 @@
 import bintray.Keys._
 import ReleaseTransformations._
 
+bintrayPublishSettings
+
 lazy val root = (project in file(".")).
   settings(
     sbtPlugin := true,
