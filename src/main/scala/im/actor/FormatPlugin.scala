@@ -3,7 +3,7 @@ package im.actor
 import sbt._
 import Keys._
 import com.typesafe.sbt.SbtScalariform
-import SbtScalariform.{ ScalariformKeys => sr }
+import SbtScalariform.{ ScalariformKeys => sr, _ }
 
 object FormatPlugin extends AutoPlugin {
   override def requires = plugins.JvmPlugin && SbtScalariform
@@ -11,18 +11,16 @@ object FormatPlugin extends AutoPlugin {
 
   override def projectSettings: Seq[Def.Setting[_]] = baseSettings
 
-  lazy val baseSettings: Seq[Setting[_]] = Seq(
-    sr.preferences := formatSettings ++ docFormatSettings
-  )
+  lazy val baseSettings = formatSettings ++ docFormatSettings
 
   lazy val formatSettings = SbtScalariform.scalariformSettings ++ Seq(
-    sr.preferences in Compile  := formattingPreferences,
-    sr.preferences in Test     := formattingPreferences
+    sr.preferences in Compile := formattingPreferences,
+    sr.preferences in Test := formattingPreferences
   )
 
   lazy val docFormatSettings = SbtScalariform.scalariformSettings ++ Seq(
-    sr.preferences in Compile  := docFormattingPreferences,
-    sr.preferences in Test     := docFormattingPreferences
+    sr.preferences in Compile := docFormattingPreferences,
+    sr.preferences in Test := docFormattingPreferences
   )
 
   private def formattingPreferences = {

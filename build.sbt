@@ -12,6 +12,7 @@ lazy val root = (project in file("."))
     name := "actor-sbt-houserules",
     description := "sbt plugin for enforcing sbt house rules in Actor Team.",
     addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.5.1"),
+    addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0"),
     licenses := Seq("Apache v2" -> url("https://github.com/actorapp/actor-sbt-houserules/blob/master/LICENSE")),
     scmInfo := Some(ScmInfo(url("https://github.com/actorapp/actor-sbt-houserules"), "git@github.com:actorapp/actor-sbt-houserules.git")),
     publishMavenStyle := false,

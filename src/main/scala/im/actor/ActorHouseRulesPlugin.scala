@@ -2,7 +2,8 @@ package im.actor
 
 import sbt._
 import Keys._
-import bintray.Keys._
+import bintray.BintrayPlugin
+import bintray.BintrayPlugin.autoImport._
 
 object ActorHouseRulesPlugin extends AutoPlugin {
   override def requires = plugins.JvmPlugin
@@ -12,14 +13,16 @@ object ActorHouseRulesPlugin extends AutoPlugin {
 
   lazy val actorServerPublishSettings = publishSettings("im.actor.server")
 
-  def actorDefaultSettings(organization: String = "im.actor") = publishSettings(organization) ++ actorCompileSettings
+  def actorDefaultSettings(org: String = "im.actor"): Seq[Def.Setting[_]] =
+    publishSettings(org) ++ actorCompileSettings
 
-  private def publishSettings(organization: String) = Seq(
-    organization := "im.actor",
-    bintrayOrganization in bintray := Some("actor"),
-    repository in bintray := "maven",
-    licenses := Seq("Apache v2" -> url("https://github.com/actorapp/actor-platform/blob/master/LICENSE"))
-  )
+  private def publishSettings(org: String): Seq[Def.Setting[_]] =
+    Seq(
+      organization := org,
+      bintrayOrganization in bintray := Some("actor"),
+      bintrayRepository in bintray := "maven",
+      licenses := Seq("Apache v2" -> url("https://github.com/actorapp/actor-platform/blob/master/LICENSE"))
+    )
 
   private lazy val actorCompileSettings = Seq(
     scalacOptions in Compile ++= Seq(
@@ -40,6 +43,6 @@ object ActorHouseRulesPlugin extends AutoPlugin {
       "-Ywarn-numeric-widen"
     ),
     javaOptions ++= Seq("-Dfile.encoding=UTF-8"),
-    javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint:unchecked", "-Xlint:deprecation"),
+    javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint:unchecked", "-Xlint:deprecation")
   )
 }
