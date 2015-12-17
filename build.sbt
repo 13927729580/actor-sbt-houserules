@@ -15,8 +15,8 @@ lazy val root = (project in file("."))
     licenses := Seq("Apache v2" -> url("https://github.com/actorapp/actor-sbt-houserules/blob/master/LICENSE")),
     scmInfo := Some(ScmInfo(url("https://github.com/actorapp/actor-sbt-houserules"), "git@github.com:actorapp/actor-sbt-houserules.git")),
     publishMavenStyle := false,
-    bintrayRepository in bintray := "sbt-plugins",
-    bintrayOrganization in bintray := Some("actor"),
+    bintrayRepository := "sbt-plugins",
+    bintrayOrganization := Some("actor"),
     releaseProcess := Seq(
       checkSnapshotDependencies,
       inquireVersions,
