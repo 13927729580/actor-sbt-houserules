@@ -1,4 +1,3 @@
-import bintray.Keys._
 import ReleaseTransformations._
 
 lazy val commonSettings = Seq(
@@ -6,7 +5,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file("."))
-  .settings(commonSettings ++ bintrayPublishSettings: _*)
+  .settings(commonSettings)
   .settings(
     sbtPlugin := true,
     name := "actor-sbt-houserules",
@@ -16,7 +15,7 @@ lazy val root = (project in file("."))
     licenses := Seq("Apache v2" -> url("https://github.com/actorapp/actor-sbt-houserules/blob/master/LICENSE")),
     scmInfo := Some(ScmInfo(url("https://github.com/actorapp/actor-sbt-houserules"), "git@github.com:actorapp/actor-sbt-houserules.git")),
     publishMavenStyle := false,
-    repository in bintray := "sbt-plugins",
+    bintrayRepository in bintray := "sbt-plugins",
     bintrayOrganization in bintray := Some("actor"),
     releaseProcess := Seq(
       checkSnapshotDependencies,
