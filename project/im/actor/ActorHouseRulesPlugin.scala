@@ -5,6 +5,9 @@ import Keys._
 import bintray.Keys._
 
 object ActorHouseRulesPlugin extends AutoPlugin {
+  override def requires = plugins.JvmPlugin
+  override def trigger = allRequirements
+
   lazy val actorPublishSettings = publishSettings("im.actor")
 
   lazy val actorServerPublishSettings = publishSettings("im.actor.server")
