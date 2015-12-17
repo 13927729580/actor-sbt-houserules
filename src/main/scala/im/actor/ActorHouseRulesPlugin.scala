@@ -5,7 +5,7 @@ import Keys._
 import bintray.BintrayPlugin
 import bintray.BintrayPlugin.autoImport._
 
-object ActorHouseRulesPlugin extends AutoPlugin {
+object ActorHouseRules extends AutoPlugin {
   override def requires = plugins.JvmPlugin
   override def trigger = allRequirements
 
